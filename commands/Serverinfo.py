@@ -22,26 +22,53 @@ description = 'This Bot Is created By Dark Terra/Darth Demono'
 colour = 0x800000
 
 
-class Serverinfo(commands.Cog):
+class Serverinfo(
+    commands.Cog
+):
     """
     Shows Server info
     """
 
-    def __init__(self, client):
+    def __init__(
+        self, client
+    ):
+
         self.client = client
 
     @commands.command(
-        aliases=['Serverinfo', 'Server'],
+        aliases=[
+            'Serverinfo',
+            'Server'
+        ],
         help='Shows Server info'
     )
-    async def server(self, ctx):
+    async def server(
+        self, ctx
+    ):
         try:
             server = ctx.message.guild
-            roles = str(len(server.roles))
-            emojis = str(len(server.emojis))
-            channels = str(len(server.channels))
-            embeded = discord.Embed()
-            embeded.title = "Bangladeshisss"
+
+            roles = str(
+                len(
+                    server.roles
+                )
+            )
+            emojis = str(
+                len(
+                    server.emojis
+                )
+            )
+            channels = str(
+                len(
+                    server.channels
+                )
+            )
+
+            embeded = discord.Embed(
+
+            )
+
+            embeded.title = "Darth Demono"
             embeded.description = "Server Info"
             embeded.color = 0xEE8700
 
@@ -96,18 +123,38 @@ class Serverinfo(commands.Cog):
                 embed=embeded
             )
         except Exception as err:
-            await ctx.send(f"Excuse me, There is an Error =  {err}")
+            await ctx.send(
+                f"Excuse me, There is an Error =  {err}"
+            )
 
     @commands.command(
-        aliases=['Uptime', 'Bot-time'],
+        aliases=[
+            'Uptime',
+            'Bot-time'
+        ],
         help='Shows bot uptime'
     )
-    async def uptime(self, ctx):
+    async def uptime(
+        self, ctx
+    ):
         try:
-            current_time = time.time()
-            difference = int(round(current_time - start_time))
-            text = str(datetime.timedelta(seconds=difference))
-            embed = discord.Embed()
+            current_time = time.time(
+
+            )
+            difference = int(
+                round(
+                    current_time - start_time
+                )
+            )
+            text = str(
+                datetime.timedelta(
+                    seconds=difference
+                )
+            )
+            embed = discord.Embed(
+
+            )
+
             embed.colour = ctx.message.author.colour
             embed.add_field(
                 name="⏳Uptime",
@@ -118,44 +165,90 @@ class Serverinfo(commands.Cog):
                 icon_url=self.client.user.avatar_url
             )
             try:
-                await ctx.channel.send(embed=embed)
+                await ctx.channel.send(
+                    embed=embed
+                )
             except discord.HTTPException:
-                await ctx.channel.send(f'⏳ Ive Been up for: `{text}`')
+                await ctx.channel.send(
+                    f'⏳ Ive Been up for: `{text}`'
+                )
         except Exception as err:
-            await ctx.send(f"Excuse me, There is an Error =  {err}")
+            await ctx.send(
+                f"Excuse me, There is an Error =  {err}"
+            )
 
     @commands.command(
-        aliases=['Ping', 'latency'],
+        aliases=[
+            'Ping',
+            'latency'
+        ],
         help='Shows Client Latency'
     )
-    async def ping(self, ctx):
+    async def ping(
+        self, ctx
+    ):
         try:
-            embed = discord.Embed()
+            embed = discord.Embed(
+
+            )
             embed.colour = 0x800000
             embed.add_field(
                 name="⏳Bot-Ping",
                 value=f'My ping is {self.client.latency}ms!'
             )
-            await ctx.send(embed=embed)
+            await ctx.send(
+                embed=embed
+            )
         except Exception as err:
-            await ctx.send(f"Excuse me, There is an Error =  {err}")
+            await ctx.send(
+                f"Excuse me, There is an Error =  {err}"
+            )
 
     @commands.command(
-        aliases=['Binfo', 'Bot-info'],
+        aliases=[
+            'Binfo',
+            'Bot-info'
+        ],
         help='Gathers and displays Bot info'
     )
-    async def botinfo(self, ctx):
+    async def botinfo(
+        self, ctx
+    ):
         try:
-            current_time = time.time()
+            current_time = time.time(
+
+            )
             ping = f'My ping is {self.client.latency}!'
-            difference = int(round(current_time - start_time))
-            text = str(datetime.timedelta(seconds=difference))
-            pythonVersion = platform.python_version()
+
+            difference = int(
+                round(
+                    current_time - start_time
+                )
+            )
+            text = str(
+                datetime.timedelta(
+                    seconds=difference
+                )
+            )
+            pythonVersion = platform.python_version(
+
+            )
             clientVersion = '1.8.4'
             dpyVersion = discord.__version__
-            serverCount = len(self.client.guilds)
-            memberCount = len(set(self.client.get_all_members()))
-            embed = discord.Embed()
+            serverCount = len(
+                self.client.guilds
+            )
+            memberCount = len(
+                set(
+                    self.client.get_all_members(
+
+                    )
+                )
+            )
+            embed = discord.Embed(
+
+            )
+
             embed.title = title
             embed.description = description
             embed.colour = colour
@@ -198,10 +291,20 @@ class Serverinfo(commands.Cog):
                 value=text,
                 inline=False
             )
-            await ctx.send(embed=embed)
+            await ctx.send(
+                embed=embed
+            )
         except Exception as err:
-            await ctx.send(f"Excuse me, There is an Error =  {err}")
+            await ctx.send(
+                f"Excuse me, There is an Error =  {err}"
+            )
 
 
-def setup(client):
-    client.add_cog(Serverinfo(client))
+def setup(
+    client
+):
+    client.add_cog(
+        Serverinfo(
+            client
+        )
+    )
